@@ -1,63 +1,16 @@
 <!DOCTYPE html>
 <html>
-<body>
-	<div id="hello">
+	<body>
+	
 		<svg id="vimage" width="500" height="500" style="border: 1px solid" xmlns="http://www.w3.org/2000/svg">
 
 		</svg>
-	</div>
+		<br/>
+		To erase the canvas: <br/>
+		<button id="erase">erase!</button>
 
-	To erase the canvas: <br/>
-	<button id="erase">erase!</button>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
-	<script>
-		var clicked = document.getElementById('erase');
-		clicked.addEventListener('click', function (e) {
-			// d3.select("vimage").remove();
-			// // document.getElementById('hello').innerHTML = '<svg id="vimage" width="500" height="500" style="border: 1px solid" xmlns="http://www.w3.org/2000/svg">'
-			
-			$("#hello").html('<svg id="vimage" width="500" height="500" style="border: 1px solid" xmlns="http://www.w3.org/2000/svg">');
-		});
-
-		var pic = document.getElementById('vimage');
-		var pX, pY;
-		pX = pY = -1;
-
-		pic.addEventListener('click', function (e){
-			var x = event.clientX;
-			var y = event.clientY;
-			var color = '#'+Math.random().toString(16).substr(-6);
-
-			// <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
-			
-			var dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-			dot.setAttribute("cx", x);
-			dot.setAttribute("cy", y);
-			dot.setAttribute("r", 10);
-			dot.setAttribute("fill", color);
-			dot.setAttribute("stroke", color);
-			pic.appendChild(dot);
-
-
-			if (pX != -1){
-				color = '#'+Math.random().toString(16).substr(-6); //another color
-				var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-				line.setAttribute("x1", x.toString());
-				line.setAttribute("y1", y.toString());
-				line.setAttribute("x2", pX.toString());
-				line.setAttribute("y2", pY.toString());
-				line.setAttribute("stroke", color);
-				pic.appendChild(line);
-			}
-
-			pX = x;
-			pY = y;
-
-		});
-
-		
-	</script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+		<script src="svg.js"></script>
 
 	</body>
 </html>
